@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Osulwe's Hair Hub — Barbershop in Summerstrand, Gqeberha</title>
+<meta name="description" content="Osulwe's Hair Hub — student-run barbershop in Summerstrand, Port Elizabeth. Chiskop, fades, taper fades and trims at student-friendly prices.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%82%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211f1b;
+    --ink-soft:#57514a;
+    --paper:#f2ecdf;
+    --paper-dim:#e7dfcd;
+    --red:#b23a2e;
+    --teal:#2c6c69;
+    --gold:#c69a3d;
+    --radius-tile: 3px;
+    --edge: 1px solid rgba(33,31,27,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand,.price-name{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;
+    border-radius:2px;
+    font-family:'Work Sans',sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--teal);color:var(--paper);}
+  .btn-primary:hover{background:#245855;}
+  .btn-ghost{background:transparent;color:var(--paper);border-color:rgba(242,236,223,0.5);}
+  .btn-ghost:hover{background:rgba(242,236,223,0.1);}
+  .btn-dark{background:var(--ink);color:var(--paper);}
+  .btn-dark:hover{background:#3a352d;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--ink);
+    color:var(--paper);
+    border-bottom:1px solid rgba(242,236,223,0.12);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px;}
+  .brand{font-size:1.15rem;line-height:1.1;}
+  .brand small{display:block;font-family:'Work Sans',sans-serif;font-weight:500;font-size:0.62rem;letter-spacing:0.14em;color:var(--gold);margin-top:2px;}
+  nav.primary{display:flex;align-items:center;gap:28px;}
+  nav.primary a{font-size:0.92rem;text-decoration:none;color:var(--paper);opacity:0.85;}
+  nav.primary a:hover{opacity:1;}
+  .header-actions{display:flex;align-items:center;gap:12px;}
+  .menu-toggle{display:none;background:none;border:none;color:var(--paper);font-size:1.6rem;cursor:pointer;padding:4px 8px;}
+
+  @media (max-width:760px){
+    nav.primary{
+      position:fixed;inset:57px 0 auto 0;
+      flex-direction:column;align-items:flex-start;gap:0;
+      background:var(--ink);
+      max-height:0;overflow:hidden;
+      transition:max-height .25s ease;
+      border-bottom:1px solid rgba(242,236,223,0.12);
+    }
+    nav.primary.open{max-height:280px;}
+    nav.primary a{padding:14px 24px;width:100%;border-top:1px solid rgba(242,236,223,0.08);}
+    .menu-toggle{display:block;}
+    .header-actions .btn span.long{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--ink);
+    color:var(--paper);
+    overflow:hidden;
+    padding:96px 0 72px;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background-color:var(--ink);
+    background-image:linear-gradient(180deg, rgba(33,31,27,0.62), rgba(33,31,27,0.93)), url('images/hero-bg.jpg');
+    background-size:cover;
+    background-position:70% 25%;
+  }
+  .hero-stripe{
+    position:absolute;top:0;right:0;bottom:0;width:34px;z-index:1;
+    background:repeating-linear-gradient(45deg,
+      var(--red) 0 14px,
+      var(--paper) 14px 28px,
+      var(--teal) 28px 42px);
+    opacity:0.9;
+  }
+  @media (max-width:760px){ .hero-stripe{width:16px;} }
+  .hero .wrap{position:relative;z-index:2;max-width:720px;}
+  .eyebrow-note{color:var(--gold);font-size:0.85rem;font-weight:500;margin-bottom:14px;}
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    line-height:0.98;
+    text-transform:uppercase;
+  }
+  .hero h1 em{font-style:normal;color:var(--gold);}
+  .hero p.lead{
+    margin-top:22px;font-size:1.12rem;color:#d9d2c3;max-width:52ch;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .hero-facts{
+    display:flex;flex-wrap:wrap;gap:28px;margin-top:52px;
+    padding-top:26px;border-top:1px solid rgba(242,236,223,0.16);
+    font-size:0.9rem;color:#cfc7b6;
+  }
+  .hero-facts strong{display:block;color:var(--paper);font-family:'Oswald',sans-serif;font-weight:500;font-size:0.98rem;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:76px 0;}
+  .section-head{max-width:56ch;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);text-transform:uppercase;}
+  .section-head p{margin-top:12px;color:var(--ink-soft);font-size:1.02rem;}
+  .on-dark{background:var(--ink);color:var(--paper);}
+  .on-dark .section-head p{color:#cfc7b6;}
+  .on-dim{background:var(--paper-dim);}
+
+  /* ---------- Services / price board ---------- */
+  .board{
+    border:var(--edge);
+    background:var(--paper);
+  }
+  .price-row{
+    display:flex;align-items:baseline;gap:14px;
+    padding:20px 26px;
+    border-bottom:var(--edge);
+  }
+  .price-row:last-child{border-bottom:none;}
+  .price-name{font-size:1.2rem;white-space:nowrap;}
+  .price-name span{display:block;font-family:'Work Sans',sans-serif;font-weight:400;font-size:0.85rem;color:var(--ink-soft);margin-top:2px;}
+  .leader{flex:1;border-bottom:2px dotted rgba(33,31,27,0.3);height:0;transform:translateY(-6px);}
+  .price-amount{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.25rem;color:var(--teal);white-space:nowrap;}
+  .board-note{margin-top:18px;font-size:0.88rem;color:var(--ink-soft);}
+
+  /* ---------- Why us strip ---------- */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(242,236,223,0.14);}
+  .why-item{background:var(--ink);padding:30px 26px;}
+  .why-item h3{color:var(--gold);font-size:1.05rem;text-transform:uppercase;margin-bottom:8px;}
+  .why-item p{margin:0;color:#cfc7b6;font-size:0.94rem;}
+  @media (max-width:760px){.why-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Gallery ---------- */
+  .gallery-tabs{display:flex;gap:10px;margin-bottom:28px;}
+  .gtab{
+    padding:9px 20px;border:1px solid var(--ink);background:transparent;
+    font-family:'Work Sans',sans-serif;font-weight:600;font-size:0.88rem;
+    cursor:pointer;border-radius:2px;color:var(--ink);
+  }
+  .gtab.active{background:var(--ink);color:var(--paper);}
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  }
+  @media (max-width:760px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  .tile{
+    position:relative;aspect-ratio:4/5;overflow:hidden;
+    background:var(--paper-dim);border:var(--edge);
+    cursor:pointer;
+  }
+  .tile img, .tile video{width:100%;height:100%;object-fit:cover;display:block;}
+  .tile .fallback{
+    position:absolute;inset:0;display:none;
+    flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    text-align:center;padding:14px;
+    background:linear-gradient(160deg, var(--paper-dim), #ddd2b3);
+    color:var(--ink-soft);font-size:0.82rem;
+  }
+  .tile.placeholder img, .tile.placeholder video{display:none;}
+  .tile.placeholder .fallback{display:flex;}
+  .fallback svg{width:34px;height:34px;stroke:var(--teal);}
+  .tile-caption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:10px 12px;font-size:0.8rem;
+    background:linear-gradient(0deg, rgba(33,31,27,0.75), transparent);
+    color:#fff;opacity:0;transition:opacity .2s ease;
+  }
+  .tile:hover .tile-caption{opacity:1;}
+  .gallery-panel{display:none;}
+  .gallery-panel.active{display:block;}
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(15,14,12,0.92);
+    display:none;align-items:center;justify-content:center;z-index:100;padding:26px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img, .lightbox video{max-width:min(90vw,760px);max-height:84vh;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .lightbox-close{
+    position:absolute;top:22px;right:26px;color:#fff;font-size:1.8rem;
+    background:none;border:none;cursor:pointer;line-height:1;
+  }
+
+  /* ---------- About ---------- */
+  .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  @media (max-width:760px){.about-layout{grid-template-columns:1fr;}}
+  .about-copy p{color:var(--ink-soft);font-size:1.02rem;}
+  .about-figure{
+    background:var(--ink);color:var(--paper);
+    padding:34px;border-left:6px solid var(--red);
+  }
+  .about-figure .stat{font-family:'Oswald',sans-serif;font-size:2.6rem;color:var(--gold);line-height:1;}
+  .about-figure .stat + p{margin-top:6px;color:#cfc7b6;font-size:0.92rem;}
+  .about-figure .stat-row{display:flex;gap:36px;margin-top:24px;}
+  .about-figure .stat-row:first-child{margin-top:0;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:var(--edge);}
+  @media (max-width:820px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-info{padding:40px;background:var(--paper);}
+  .contact-info .row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(33,31,27,0.1);}
+  .contact-info .row:last-child{border-bottom:none;}
+  .contact-info .row strong{display:block;font-family:'Oswald',sans-serif;font-weight:500;font-size:0.98rem;}
+  .contact-info .row span{color:var(--ink-soft);font-size:0.92rem;}
+  .contact-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;}
+  .contact-media{display:flex;flex-direction:column;height:100%;min-height:340px;}
+  .contact-photo{
+    position:relative;flex:1 1 45%;min-height:150px;
+    background:var(--paper-dim);overflow:hidden;
+  }
+  .contact-photo img{width:100%;height:100%;object-fit:cover;}
+  .contact-photo .fallback{
+    position:absolute;inset:0;display:none;
+    flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    background:linear-gradient(160deg, var(--paper-dim), #ddd2b3);
+    color:var(--ink-soft);font-size:0.82rem;text-align:center;padding:14px;
+  }
+  .contact-photo .fallback svg{width:30px;height:30px;stroke:var(--teal);}
+  .contact-photo.placeholder img{display:none;}
+  .contact-photo.placeholder .fallback{display:flex;}
+  .map-embed{min-height:190px;flex:1 1 55%;border:none;width:100%;filter:grayscale(0.25) contrast(1.05);}
+
+  footer{background:var(--ink);color:#a89f8f;padding:34px 0;font-size:0.85rem;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;}
+  footer a{text-decoration:none;color:var(--gold);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .btn, nav.primary{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#top" class="brand" style="text-decoration:none;">
+      OSULWE'S HAIR HUB
+      <small>SUMMERSTRAND &middot; GQEBERHA</small>
+    </a>
+    <nav class="primary" id="primaryNav">
+      <a href="#services">Prices</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-primary" href="https://wa.me/27728463539?text=Hi%20Osulwe%27s%20Hair%20Hub%2C%20I%27d%20like%20to%20book%20a%20cut" target="_blank" rel="noopener">
+        <span class="long">Book on</span> WhatsApp
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  <div class="wrap">
+    <p class="eyebrow-note">Student-run &middot; walk-ins welcome</p>
+    <h1>Sharp cuts, <em>student prices.</em></h1>
+    <p class="lead">Osulwe's Hair Hub is a barbershop based in Summerstrand, Port Elizabeth — open to everyone, wherever you're coming from. Clean fades and taper cuts without the campus-budget guilt.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://wa.me/27728463539?text=Hi%20Osulwe%27s%20Hair%20Hub%2C%20I%27d%20like%20to%20book%20a%20cut" target="_blank" rel="noopener">Book a cut &#8594;</a>
+      <a class="btn btn-ghost" href="tel:+27728463539">Call 072 846 3539</a>
+    </div>
+    <div class="hero-facts">
+      <div><strong>4 Gomery Place</strong>Summerstrand, Port Elizabeth</div>
+      <div><strong>R30 – R70</strong>Per cut, no hidden extras</div>
+      <div><strong>Mon – Sun</strong>Message to confirm today's hours</div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The price board</h2>
+      <p>Straightforward pricing, no surprises at the chair.</p>
+    </div>
+    <div class="board">
+      <div class="price-row">
+        <div class="price-name">Chiskop<span>Shaved down to the skin</span></div>
+        <div class="leader"></div>
+        <div class="price-amount">R40</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">Fade — High / Low<span>Blended fade, your choice of height</span></div>
+        <div class="leader"></div>
+        <div class="price-amount">R70</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">Taper Fade<span>Tight, gradual blend down the neckline</span></div>
+        <div class="leader"></div>
+        <div class="price-amount">R70</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">Trim<span>Tidy-up and line-up</span></div>
+        <div class="leader"></div>
+        <div class="price-amount">R30</div>
+      </div>
+    </div>
+    <p class="board-note">Prices confirmed at time of booking. Message on WhatsApp to check today's availability.</p>
+  </div>
+</section>
+
+<section class="on-dark">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Why book here</h2>
+    </div>
+  </div>
+  <div class="why-grid">
+    <div class="why-item">
+      <h3>Open to everyone</h3>
+      <p>Based in Summerstrand, welcoming anyone who walks in — no matter where you're from.</p>
+    </div>
+    <div class="why-item">
+      <h3>Fair, fixed prices</h3>
+      <p>Set rates from R30, built around what students can actually afford.</p>
+    </div>
+    <div class="why-item">
+      <h3>Book in seconds</h3>
+      <p>One tap on WhatsApp confirms your slot — no apps, no accounts.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The work</h2>
+      <p>A look at recent cuts. Tap any tile to view it larger.</p>
+    </div>
+    <div class="gallery-tabs">
+      <button class="gtab active" data-target="panel-photos">Cuts</button>
+      <button class="gtab" data-target="panel-clips">Clips</button>
+    </div>
+
+    <div class="gallery-panel active" id="panel-photos">
+      <div class="gallery-grid" id="photoGrid"></div>
+    </div>
+    <div class="gallery-panel" id="panel-clips">
+      <div class="gallery-grid" id="videoGrid"></div>
+    </div>
+  </div>
+</section>
+
+<section class="on-dim" id="about">
+  <div class="wrap about-layout">
+    <div class="about-copy">
+      <div class="section-head" style="margin-bottom:20px;">
+        <h2>About the hub</h2>
+      </div>
+      <p>One chair, one set of clippers, and a habit of sending people out looking sharper than they walked in. Osulwe's Hair Hub started as a side hustle to fund the books — it's grown into the cut people trust before an interview, a night out, or just a Monday. Chiskops, fades, taper cuts: whatever you're after, it's done properly, every time.</p>
+      <p>Based in Summerstrand, the door's open to anyone in the area — students, staff, families, whoever's next in the chair. Bring a photo, describe the vibe, or just trust the clippers.</p>
+    </div>
+    <div class="about-figure">
+      <div class="stat-row">
+        <div><span class="stat">R30</span><p>Starting price</p></div>
+        <div><span class="stat">4</span><p>Cuts on the board</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Book a slot</h2>
+      <p>Message on WhatsApp, call, or drop by.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="row">
+          <div>
+            <strong>Address</strong>
+            <span>4 Gomery Place, Summerstrand, Port Elizabeth</span>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Phone</strong>
+            <span>072 846 3539</span>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Email</strong>
+            <span id="emailText">osulwenjemla64@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-dark" href="https://wa.me/27728463539?text=Hi%20Osulwe%27s%20Hair%20Hub%2C%20I%27d%20like%20to%20book%20a%20cut" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-dark" href="tel:+27728463539">Call</a>
+          <a class="btn btn-dark" id="emailLink" href="#">Email</a>
+        </div>
+      </div>
+      <div class="contact-media">
+        <div class="contact-photo" id="bookingPhoto">
+          <img src="images/shop-photo.jpg" alt="Inside Osulwe's Hair Hub" loading="lazy">
+          <div class="fallback"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg><span>Add "images/shop-photo.jpg" to show your shop here</span></div>
+        </div>
+        <iframe class="map-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=4+Gomery+Place,+Summerstrand,+Port+Elizabeth&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; <span id="year"></span> Osulwe's Hair Hub. Summerstrand, Gqeberha.</div>
+    <div>Built with care for the hustle.</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <div id="lightboxContent"></div>
+</div>
+
+<script>
+/* ============================================================
+   YOUR OWN PHOTOS & VIDEOS — already live below.
+   To swap in new work later, add a file to the "images" or
+   "gallery" folder next to this index.html and either reuse an
+   existing file name or add a new entry to the lists below
+   (videos can take a matching "-poster.jpg" thumbnail too).
+   Anything not found yet shows a clean placeholder instead of a
+   broken image or video.
+   ============================================================ */
+const photos = [
+  {src:'gallery/cut-1.jpg', caption:'Line-up in progress'},
+  {src:'gallery/cut-2.jpg', caption:'Fresh fade, side view'},
+  {src:'gallery/cut-4.jpg', caption:'Crisp fade, front view'},
+  {src:'gallery/cut-5.jpg', caption:'At the chair'},
+  {src:'gallery/cut-6.jpg', caption:'Happy client'},
+  {src:'gallery/cut-7.jpg', caption:'Shaping up the line'},
+];
+const clips = [
+  {src:'gallery/clip-1.mp4', poster:'gallery/clip-1-poster.jpg', caption:'Fade in progress'},
+  {src:'gallery/clip-2.mp4', poster:'gallery/clip-2-poster.jpg', caption:'Fresh chiskop reveal'},
+  {src:'gallery/clip-3.mp4', poster:'gallery/clip-3-poster.jpg', caption:'Line-up finish'},
+  {src:'gallery/clip-4.mp4', poster:'gallery/clip-4-poster.jpg', caption:'Fade reveal'},
+  {src:'gallery/clip-5.mp4', poster:'gallery/clip-5-poster.jpg', caption:'Fresh fade finish'},
+  {src:'gallery/clip-6.mp4', poster:'gallery/clip-6-poster.jpg', caption:'Clean fade, close-up'},
+  {src:'gallery/clip-7.mp4', poster:'gallery/clip-7-poster.jpg', caption:'Line-up in progress'},
+  {src:'gallery/clip-8.mp4', poster:'gallery/clip-8-poster.jpg', caption:'Brushing out the fade'},
+  {src:'gallery/clip-9.mp4', poster:'gallery/clip-9-poster.jpg', caption:'Happy client, fresh cut'},
+  {src:'gallery/clip-10.mp4', poster:'gallery/clip-10-poster.jpg', caption:'Taper detail'},
+];
+
+const iconSVG = `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>`;
+
+function buildPhotoTile(item){
+  const tile = document.createElement('div');
+  tile.className = 'tile';
+  tile.innerHTML = `
+    <img src="${item.src}" alt="${item.caption}" loading="lazy">
+    <div class="fallback">${iconSVG}<span>Add "${item.src}" to show this cut</span></div>
+    <div class="tile-caption">${item.caption}</div>`;
+  const img = tile.querySelector('img');
+  img.addEventListener('error', () => tile.classList.add('placeholder'));
+  tile.addEventListener('click', () => {
+    if (tile.classList.contains('placeholder')) return;
+    openLightbox(`<img src="${item.src}" alt="${item.caption}">`);
+  });
+  return tile;
+}
+
+function buildVideoTile(item){
+  const tile = document.createElement('div');
+  tile.className = 'tile';
+  tile.innerHTML = `
+    <video src="${item.src}" ${item.poster ? `poster="${item.poster}"` : ''} muted playsinline preload="metadata"></video>
+    <div class="fallback">${iconSVG}<span>Add "${item.src}" to show this clip</span></div>
+    <div class="tile-caption">${item.caption}</div>`;
+  const vid = tile.querySelector('video');
+  vid.addEventListener('error', () => tile.classList.add('placeholder'));
+  tile.addEventListener('click', () => {
+    if (tile.classList.contains('placeholder')) return;
+    openLightbox(`<video src="${item.src}" controls autoplay></video>`);
+  });
+  return tile;
+}
+
+const photoGrid = document.getElementById('photoGrid');
+const videoGrid = document.getElementById('videoGrid');
+photos.forEach(p => photoGrid.appendChild(buildPhotoTile(p)));
+clips.forEach(c => videoGrid.appendChild(buildVideoTile(c)));
+
+/* tabs */
+document.querySelectorAll('.gtab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.gtab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.gallery-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.target).classList.add('active');
+  });
+});
+
+/* lightbox */
+const lightbox = document.getElementById('lightbox');
+const lightboxContent = document.getElementById('lightboxContent');
+function openLightbox(html){
+  lightboxContent.innerHTML = html;
+  lightbox.classList.add('open');
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  lightboxContent.innerHTML = '';
+}
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+/* mobile nav */
+const menuToggle = document.getElementById('menuToggle');
+const primaryNav = document.getElementById('primaryNav');
+menuToggle.addEventListener('click', () => {
+  const open = primaryNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', open);
+});
+primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  primaryNav.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', false);
+}));
+
+/* booking-section photo fallback */
+const bookingPhoto = document.getElementById('bookingPhoto');
+bookingPhoto.querySelector('img').addEventListener('error', () => bookingPhoto.classList.add('placeholder'));
+
+/* email (built with JS to keep it a little less scrape-friendly) */
+const emailUser = "osulwenjemla64";
+const emailDomain = "gmail.com";
+document.getElementById('emailLink').href = `mailto:${emailUser}@${emailDomain}`;
+
+/* footer year */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
